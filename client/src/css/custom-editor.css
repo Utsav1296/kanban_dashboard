@@ -1,0 +1,53 @@
+.ck.ck-editor__main>.ck-editor__editable {
+   background-color: transparent;
+   min-height: 8rem;
+   max-height: 12rem;
+   word-wrap: break-word;
+   border: none;
+   outline: none;
+}
+
+.ck.ck-editor__main>.ck-editor__editable.ck-focused {
+   border: none;
+}
+
+.ck.ck-toolbar .ck.ck-toolbar__separator {
+   background-color: transparent;
+}
+
+.ck.ck-toolbar.ck-toolbar_grouping {
+   background-color: transparent;
+   border: none;
+}
+
+.ck.ck-button,
+.ck.ck-button.ck-on {
+   color: rgb(16, 19, 17);
+   background-color: transparent;
+}
+
+.ck.ck-button:hover,
+.ck.ck-button.ck-off:hover,
+.ck.ck-button.ck-on:hover {
+   background-color: transparent !important;
+   cursor: pointer;
+   color: rgb(255, 5, 5);
+}
+
+.ck-dropdown__panel .ck.ck-button.ck-off.ck-button__with-text {
+   background-color: rgb(239, 255, 196) !important;
+}
+
+.ck.ck-list__item {
+   background-color: rgb(255, 249, 143) !important;
+}
+
+.ck-dropdown__panel .ck-dropdown__panel-visible {
+   border: none;
+}
+
+.ck-editor__top {
+   position: sticky !important;
+   top: 0 !important;
+   background: #f4f5a0 !important;
+}
