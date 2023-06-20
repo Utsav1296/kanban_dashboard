@@ -40,7 +40,6 @@ const Drawer = () => {
       const getBoards = async () => {
          try {
             const res = await boardApi.getAll()
-            console.log(res)
             dispatch(setBoards(res))
          } catch (err) {
             alert(err)

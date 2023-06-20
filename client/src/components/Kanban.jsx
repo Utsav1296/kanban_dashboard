@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { AiOutlineDelete, AiFillDelete, AiFillPlusSquare } from 'react-icons/ai'
 import sectionApi from '../api/sectionApi'
@@ -117,6 +117,21 @@ const Kanban = props => {
     setData(newData)
   }
 
+  const delTask = async (taskId, sectionId) => {
+    try {
+      await taskApi.delete(sectionId, taskId)
+      const newData = [...data]
+      const sectionIndex = newData.findIndex(e => e.id === sectionId)
+      const taskIndex = newData[sectionIndex].tasks.findIndex(e => e.id === taskId)
+      newData[sectionIndex].tasks.splice(taskIndex, 1)
+      setData(newData)
+      setSelectedTask(undefined)
+    } catch (err) {
+      alert(err)
+    }
+  }
+
+
   return (
     <>
       <div className="flex items-center justify-between">
@@ -152,7 +167,7 @@ const Kanban = props => {
                           < AiFillPlusSquare />
                         </button>
                         <button type='button' className='text-xl text-gray-500 hover:text-red-600'
-                          onClick={() => deleteSection(section.id)}
+                        // onClick={() => deleteSection(section.id)}
 
                         >
                           < AiFillDelete />
@@ -163,22 +178,29 @@ const Kanban = props => {
                         section.tasks.map((task, index) => (
                           <Draggable key={task?.id} draggableId={task?.id} index={index}>
                             {(provided, snapshot) => (
-                              <div className="block rounded-lg bg-white px-6 py-1 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 mt-2"
+                              <div className="block rounded-lg hover:bg-white bg-gray-100 px-6 py-1 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 mt-2 dark:hover:bg-neutral-800"
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
                                 {...provided.dragHandleProps}
-                                onClick={() => setSelectedTask(task)}
+
                               >
-                                <div className='flex gap-1'>
-                                  <span>😎</span>
+                                <div className='flex justify-between items-center'>
+                                  <div className='center gap-1' onClick={() => setSelectedTask(task)}>
+                                    <span>😎</span>
+                                    {/* <EmojiPicker icon={icon} onChange={onIconChange} onClick={clickEmoji} /> */}
 
-                                  <h5 className={`mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50  ${snapshot.isDragging ? 'cursor-grab' : 'cursor-pointer'}`}
+                                    <h5 className={`mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50  ${snapshot.isDragging ? 'cursor-grab' : 'cursor-pointer'}`}
 
+                                    >
+                                      {task?.title === '' ? 'Untitled' : task?.title}
+                                    </h5>
+                                  </div>
+                                  <button type='button' className='text-2xl text-gray-500 hover:text-red-600'
+                                    onClick={() => delTask(task?.id, section?.id)}
                                   >
-                                    {task?.title === '' ? 'Untitled' : task?.title}
-                                  </h5>
+                                    < AiFillDelete />
+                                  </button>
                                 </div>
-
                               </div>
                             )}
                           </Draggable>
@@ -191,8 +213,8 @@ const Kanban = props => {
               </div>
             ))
           }
-        </div>
-      </DragDropContext>
+        </div >
+      </DragDropContext >
       <TaskModal
         task={selectedTask}
         boardId={boardId}

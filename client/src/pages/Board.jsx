@@ -143,11 +143,11 @@ const Board = () => {
   return (
     <div className="bg-gray-100 text-gray-900 p-4 w-[100%] h-[100vh] dark:text-gray-200 dark:bg-gray-900">
 
-      <div className="max-w-7xl">
+      <div className="max-w-[300px] sm:max-w-xl md:max-w-2xl lg:max-w-4xl">
         <div className="flex items-center justify-between w-full">
           <button
             className={`center border h-8 w-8 bg-gray-200 dark:bg-gray-800 border-solid rounded p-1 
-          ${isFavourite ? 'text-yellow-600 dark:text-yellow-200' : 'text-gray-900 dark:text-gray-100'}`}
+          ${isFavourite ? 'text-yellow600 dark:text-yellow-200' : 'text-gray-900 dark:text-gray-100'}`}
             onClick={addFavourite}
           >
             {isFavourite ? (

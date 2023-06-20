@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import { sunicon, moonicon } from '../assets/index'
 import { MdDarkMode, MdLightMode } from 'react-icons/md'
 
 
