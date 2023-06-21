@@ -50,7 +50,7 @@ const Drawer = () => {
 
    useEffect(() => {
       const activeItem = boards?.findIndex(e => e.id === boardId)
-      if (boards.length > 0 && boardId === undefined) {
+      if (boards?.length > 0 && boardId === undefined) {
          navigate(`/boards/${boards[0].id}`)
       }
       setActiveIndex(activeItem)
@@ -109,7 +109,7 @@ const Drawer = () => {
                      <div ref={provided.innerRef} {...provided.droppableProps}>
                         {
                            boards?.map((item, index) => (
-                              <Draggable key={item.id} draggableId={item.id} index={index}>
+                              <Draggable key={item.id} draggableId={item.id} index={index} draggable>
                                  {(provided, snapshot) => (
                                     <Link className={`flex font-bold pl-8 mt-1 text-gray-300 ${snapshot.isDragging ? 'cursor-grab' : 'cursor-pointer'} text-ellipsis overflow-auto`}
                                        ref={provided.innerRef}

@@ -18,7 +18,6 @@ const EmojiPicker = props => {
     let codesArray = []
     sym.forEach(el => codesArray.push('0x' + el))
     const emoji = String.fromCodePoint(...codesArray)
-    // console.log(emoji)
     setIsShowPicker(false)
     props.onChange(emoji)
   }

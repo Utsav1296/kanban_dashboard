@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import authUtils from '../utils/authUtils'
 import Loader from '../components/Loader'
-// import assets from '../../assets'
 
 const AuthLayout = () => {
   const navigate = useNavigate()

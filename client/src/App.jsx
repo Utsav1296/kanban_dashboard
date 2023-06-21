@@ -1,4 +1,3 @@
-// import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import AppLayout from './wrapper/AppLayout'
 import AuthLayout from './wrapper/AuthLayout'
@@ -6,7 +5,6 @@ import Home from './pages/Home'
 import Board from './pages/Board'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
-// import { fetchUser } from './utils/fetchUser'
 import './css/App.css'
 
 function App() {
