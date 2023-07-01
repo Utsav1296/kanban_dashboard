@@ -36,8 +36,6 @@ app.use("/api/boards", boardRoute)
 app.use("/api/boards/:boardId/sections", sectionRoute)
 app.use("/api/boards/:boardId/tasks", taskRoute)
 
-
-
 app.use((err, req, res, next) => {
    const errorStatus = err.status || 500
    const errorMessage = err.message || "Something went wrong at your server!"

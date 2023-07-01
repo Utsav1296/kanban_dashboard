@@ -143,43 +143,45 @@ const Board = () => {
   return (
     <div className="bg-gray-100 text-gray-900 p-4 w-[100%] h-[100vh] dark:text-gray-200 dark:bg-gray-900">
 
-      <div className="max-w-[300px] sm:max-w-xl md:max-w-2xl lg:max-w-4xl">
-        <div className="flex items-center justify-between w-full">
-          <button
-            className={`center border h-8 w-8 bg-gray-200 dark:bg-gray-800 border-solid rounded p-1 ${isFavourite ? 'text-yellow-600 dark:text-yellow-200' : 'text-gray-900 dark:text-gray-100'}`}
-            onClick={addFavourite}
-          >
-            {isFavourite ? (
-              <AiFillStar />
-            ) : (
-              <AiOutlineStar />
-            )}
-          </button>
-          <button className="center h-8 w-8 text-red-600 bg-gray-200 dark:bg-gray-800 border border-solid rounded p-1 text-error" onClick={deleteBoard}>
-            <AiFillDelete />
-          </button>
-        </div>
+      <div className="center">
+        <div className="min-w-[80%] sm:max-w-xl md:max-w-2xl lg:max-w-5xl">
+          <div className="flex items-center justify-between w-full">
+            <button
+              className={`center border h-8 w-8 bg-gray-200 dark:bg-gray-800 border-solid rounded p-1 ${isFavourite ? 'text-yellow-600 dark:text-yellow-200' : 'text-gray-900 dark:text-gray-100'}`}
+              onClick={addFavourite}
+            >
+              {isFavourite ? (
+                <AiFillStar />
+              ) : (
+                <AiOutlineStar />
+              )}
+            </button>
+            <button className="center h-8 w-8 text-red-600 bg-gray-200 dark:bg-gray-800 border border-solid rounded p-1 text-error" onClick={deleteBoard}>
+              <AiFillDelete />
+            </button>
+          </div>
 
-        {/* featured */}
-        <div className="py-2 px-10">
-          <div className="bg-white mt-2 dark:bg-slate-800 rounded-lg px-6 py-3 ring-1 ring-slate-900/5 shadow-xl">
-            <div className="flex gap-2">
-              <EmojiPicker icon={icon} onChange={onIconChange} onClick={clickEmoji} />
-              <input
-                type='text'
-                value={title}
-                onChange={updateTitle}
-                placeholder="Untitled"
-                className=" w-full rounded p-1 text-2xl text-slate-900 bg-inherit  dark:text-white font-bold tracking-tight appearance-none"
+          {/* featured */}
+          <div className="py-2 min-w-[300px] px-10">
+            <div className="bg-white mt-2 dark:bg-slate-800 rounded-lg px-6 py-3 ring-1 ring-slate-900/5 shadow-xl">
+              <div className="flex gap-2">
+                <EmojiPicker icon={icon} onChange={onIconChange} onClick={clickEmoji} />
+                <input
+                  type='text'
+                  value={title}
+                  onChange={updateTitle}
+                  placeholder="Untitled"
+                  className=" w-full rounded p-1 text-2xl text-slate-900 bg-inherit  dark:text-white font-bold tracking-tight appearance-none"
+                />
+              </div>
+              <textarea
+                value={description}
+                onChange={updateDescription}
+                placeholder="Add a description"
+                className="text-slate-500 border-none bg-inherit dark:text-slate-400 p-2 mt-2 text-sm w-full appearance-none"
+                rows={4}
               />
             </div>
-            <textarea
-              value={description}
-              onChange={updateDescription}
-              placeholder="Add a description"
-              className="text-slate-500 border-none bg-inherit dark:text-slate-400 p-2 mt-2 text-sm w-full appearance-none"
-              rows={4}
-            />
           </div>
         </div>
       </div>
